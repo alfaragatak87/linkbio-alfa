@@ -1,0 +1,57 @@
+body {
+    background: #0f172a;
+    font-family: Arial, sans-serif;
+    color: white;
+    text-align: center;
+    padding-top: 50px;
+  }
+  
+  .container {
+    width: 90%;
+    max-width: 400px;
+    margin: auto;
+  }
+  
+  .profile {
+    width: 120px;
+    border-radius: 50%;
+  }
+  
+  .link {
+    display: block;
+    background: white;
+    color: black;
+    padding: 12px;
+    margin: 10px 0;
+    text-decoration: none;
+    border-radius: 10px;
+    transition: 0.3s;
+    font-weight: bold;
+  }
+  
+  .link:hover {
+    transform: scale(1.05);
+    background: #22c55e;
+    color: white;
+  }
+/* Light mode */
+.light {
+    background: #f1f5f9;
+    color: black;
+  }
+  
+  .light .link {
+    background: #0f172a;
+    color: white;
+  }
+  
+  /* Tombol toggle */
+  .toggle {
+    margin-top: 15px;
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+    background: #eab308;
+    font-weight: bold;
+    cursor: pointer;
+  }
