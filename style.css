@@ -1,57 +1,248 @@
 body {
-    background: #0f172a;
-    font-family: Arial, sans-serif;
-    color: white;
-    text-align: center;
-    padding-top: 50px;
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  color: white;
+  text-align: center;
+  padding-top: 50px;
+  background: linear-gradient(-45deg, #0f172a, #1e3a8a, #0ea5e9, #22c55e);
+  background-size: 400% 400%;
+  animation: gradientBG 10s ease infinite;
+}
+
+@keyframes gradientBG {
+  0% {background-position: 0% 50%;}
+  50% {background-position: 100% 50%;}
+  100% {background-position: 0% 50%;}
+}
+
+.container {
+  width: 90%;
+  max-width: 400px;
+  margin: auto;
+}
+
+/* AVATAR */
+.avatar {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 45px;
+  font-weight: bold;
+  color: white;
+  background: linear-gradient(45deg, #22c55e, #0ea5e9, #1e3a8a);
+  background-size: 300% 300%;
+  animation: gradientMove 5s ease infinite, pulse 2s infinite;
+  box-shadow: 0 0 25px #22c55e;
+}
+
+@keyframes gradientMove {
+  0% {background-position: 0% 50%;}
+  50% {background-position: 100% 50%;}
+  100% {background-position: 0% 50%;}
+}
+
+@keyframes pulse {
+  0% { box-shadow: 0 0 10px #22c55e; }
+  50% { box-shadow: 0 0 25px #22c55e; }
+  100% { box-shadow: 0 0 10px #22c55e; }
+}
+
+/* TOMBOL */
+.link {
+  display: block;
+  margin: 12px 0;
+  padding: 14px;
+  border-radius: 15px;
+  text-decoration: none;
+  font-weight: bold;
+  color: white;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  transition: 0.3s;
+  box-shadow: 0 0 10px rgba(0,0,0,0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.link:hover {
+  transform: scale(1.08);
+  box-shadow: 0 0 20px #22c55e;
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* RIPPLE EFFECT */
+.link span.ripple {
+  position: absolute;
+  border-radius: 50%;
+  transform: scale(0);
+  background: rgba(255,255,255,0.5);
+  animation: ripple 0.6s linear;
+  pointer-events: none;
+}
+
+@keyframes ripple {
+  to {
+    transform: scale(15);
+    opacity: 0;
   }
-  
-  .container {
-    width: 90%;
-    max-width: 400px;
-    margin: auto;
-  }
-  
-  .profile {
-    width: 120px;
-    border-radius: 50%;
-  }
-  
-  .link {
-    display: block;
-    background: white;
-    color: black;
-    padding: 12px;
-    margin: 10px 0;
-    text-decoration: none;
-    border-radius: 10px;
-    transition: 0.3s;
-    font-weight: bold;
-  }
-  
-  .link:hover {
-    transform: scale(1.05);
-    background: #22c55e;
-    color: white;
-  }
-/* Light mode */
-.light {
-    background: #f1f5f9;
-    color: black;
-  }
-  
-  .light .link {
-    background: #0f172a;
-    color: white;
-  }
-  
-  /* Tombol toggle */
-  .toggle {
-    margin-top: 15px;
-    padding: 10px;
-    border: none;
-    border-radius: 10px;
-    background: #eab308;
-    font-weight: bold;
-    cursor: pointer;
-  }
+}
+
+/* DARK MODE BUTTON */
+.toggle {
+  margin-top: 15px;
+  padding: 10px;
+  border-radius: 10px;
+  border: none;
+  background: #eab308;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* CANVAS STARS */
+#stars {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+.link::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(120deg, transparent, rgba(255,255,255,0.5), transparent);
+  transition: 0.5s;
+}
+
+.link:hover::before {
+  left: 100%;
+}
+#typing::after {
+  content: "|";
+  margin-left: 5px;
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  0%, 50%, 100% {opacity: 1;}
+  25%, 75% {opacity: 0;}
+}
+/* WELCOME SCREEN */
+#welcome {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: #020617;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  z-index: 9999;
+  text-align: center;
+}
+
+/* GLITCH TEXT */
+.glitch {
+  font-size: 32px;
+  position: relative;
+  color: white;
+}
+
+.glitch::before,
+.glitch::after {
+  content: attr(data-text);
+  position: absolute;
+  left: 0;
+}
+
+.glitch::before {
+  animation: glitchTop 1s infinite linear alternate-reverse;
+  color: #22c55e;
+  clip-path: inset(0 0 50% 0);
+}
+
+.glitch::after {
+  animation: glitchBottom 1s infinite linear alternate-reverse;
+  color: #0ea5e9;
+  clip-path: inset(50% 0 0 0);
+}
+
+@keyframes glitchTop {
+  0% { transform: translate(2px, -2px); }
+  100% { transform: translate(-2px, 2px); }
+}
+
+@keyframes glitchBottom {
+  0% { transform: translate(-2px, 2px); }
+  100% { transform: translate(2px, -2px); }
+}
+
+/* LOADING BAR */
+.loading-bar {
+  width: 200px;
+  height: 6px;
+  background: #111;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.loading-progress {
+  width: 0%;
+  height: 100%;
+  background: linear-gradient(90deg, #22c55e, #0ea5e9);
+  animation: load 2s linear forwards;
+}
+
+@keyframes load {
+  to { width: 100%; }
+}
+
+/* BUTTON MASUK */
+#enterBtn {
+  padding: 10px 25px;
+  border: none;
+  border-radius: 20px;
+  background: linear-gradient(45deg, #22c55e, #0ea5e9);
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 0 15px #22c55e;
+  transition: 0.3s;
+}
+
+#enterBtn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 25px #22c55e;
+}
+body {
+  transform: scale(0.98);
+  transition: transform 0.8s ease;
+}
+
+body.loaded {
+  transform: scale(1);
+}
+#enterBtn {
+  position: relative;
+  overflow: hidden;
+}
+
+#enterBtn span {
+  position: absolute;
+  border-radius: 50%;
+  transform: scale(0);
+  background: rgba(255,255,255,0.5);
+  animation: ripple 0.6s linear;
+}
