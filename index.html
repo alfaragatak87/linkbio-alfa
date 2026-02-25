@@ -5,15 +5,28 @@
   <title>Link Bio Alfa</title>
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  <button id="toggleMode" class="toggle">🌙 Dark Mode</button>
+  <audio id="ambient" src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_c8c8a73467.mp3" loop></audio>
 </head>
 <body>
+  <div id="welcome">
+    <h1 class="glitch" data-text="Selamat Datang">Selamat Datang</h1>
+    <p>di Link Bio Alfa</p>
+  
+    <div class="loading-bar">
+      <div class="loading-progress"></div>
+    </div>
+  
+    <button id="enterBtn">Masuk</button>
+  
+    <audio id="clickSound" src="https://www.soundjay.com/buttons/sounds/button-16.mp3"></audio>
+  </div>
+  <canvas id="stars"></canvas>
 
   <div class="container">
-    <img src="https://via.placeholder.com/150" class="profile">
+    <div class="avatar">A</div>
 
-    <h1>Muhammad Alfatih</h1>
-    <p>Mahasiswa Informatika</p>
+    <h1 id="typing"></h1>
+    <p>Mahasiswa Informatika | ITB Widyagama Lumajang</p>
 
 
     <a href="https://github.com/alfaragatak87" class="link"><i class="fa-brands fa-github"></i> GitHub</a>
